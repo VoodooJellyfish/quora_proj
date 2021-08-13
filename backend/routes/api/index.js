@@ -5,10 +5,11 @@ const { User } = require('../../db/models');
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const questionssRouter = require('./questions.js');
 
 router.use('/session', sessionRouter);
-
 router.use('/users', usersRouter);
+router.use('/questions', questionsRouter);
 
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
