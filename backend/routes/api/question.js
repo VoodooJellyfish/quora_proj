@@ -21,8 +21,9 @@ router.get('', asyncHandler(async (req, res) => {
   res.json(questions);
 }));
 
+// GET /api/questions/:questionId
 router.get('/:questionId', asyncHandler(async (req, res) => {
-  let questionId = parseInt(req.params.id, 10);
+  let questionId = parseInt(req.params.questionId, 10);
   const question = await Question.findByPk(questionId)
   res.json(question);
 }));

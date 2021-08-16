@@ -21,6 +21,12 @@ export const fetchQuestions = () => async (dispatch) => {
   dispatch(getQuestions(questions));
 };
 
+export const thunk_fetchUserQuestions = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}`)
+  const questions = await res.json();
+  dispatch(getQuestions(questions))
+}
+
 export const thunk_fetchQuestion = (questionId) => async (dispatch) => {
   const res = await fetch(`/api/questions/${questionId}`);
   if(res.ok) {
@@ -30,7 +36,8 @@ export const thunk_fetchQuestion = (questionId) => async (dispatch) => {
 };
 
 export const thunk_createQuestion = (payload) => async (dispatch) => {
-  const res = await fetch('/api/questions', {
+  const userId = payload.ownerId
+  const res = await fetch(`/api/users/${userId}/question`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

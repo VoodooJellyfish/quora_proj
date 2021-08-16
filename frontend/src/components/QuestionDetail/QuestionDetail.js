@@ -12,7 +12,9 @@ const QuestionDetails = () => {
   const dispatch = useDispatch();
   const {questionId} = useParams()
   const questions = useSelector(state => Object.values(state.question));
-  console.log(questions)
+  console.log("Entire LIst", questions)
+  let questionChoice = questions.find(question => +question.id === +questionId)
+  console.log("Chosen Question", questionChoice)
 
   // Use a 'react' hook and cause a side effect
   useEffect(() => {
@@ -21,7 +23,7 @@ const QuestionDetails = () => {
 
   return (
     <div>
-      {questions.title}
+      {questionChoice.title}
     </div>
   );
 };
