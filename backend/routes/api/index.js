@@ -5,7 +5,7 @@ const { User } = require('../../db/models');
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-const questionssRouter = require('./questions.js');
+const questionsRouter = require('./question.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
