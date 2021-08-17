@@ -37,7 +37,7 @@ export const thunk_fetchQuestion = (questionId) => async (dispatch) => {
 
 export const thunk_createQuestion = (payload) => async (dispatch) => {
   const userId = payload.ownerId
-  const res = await fetch(`/api/users/${userId}/question`, {
+  const res = await csrfFetch(`/api/users/${userId}/question`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

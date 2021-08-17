@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import MainPage from './components/Home_page'
 import QuestionDetails from "./components/QuestionDetail/QuestionDetail";
 import UserQuestionList from "./components/UserProfile/UserProfile";
+import CreateQuestionForm from "./components/QuestionForm/QuestionForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
           </Route>
           <Route path="/users/:userId">
             <UserQuestionList/>
+            <CreateQuestionForm/>
           </Route>  
         </Switch>
       )}
