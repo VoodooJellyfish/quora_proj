@@ -73,7 +73,7 @@ router.post('/:userId/question', validateQuestion, asyncHandler(async (req, res)
   const ValidatorErrors = validationResult(req)
   if(ValidatorErrors.isEmpty()) {
     await question.save()
-    return res.redirect(`/${userId}`)
+    res.json(question)
   }
 
   res.json(userQuestions);

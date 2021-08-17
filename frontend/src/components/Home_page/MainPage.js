@@ -11,7 +11,7 @@ const MainPage = () => {
   const history = useHistory()
 
   const user = useSelector(state => Object.values(state.session));
-  const userId = user[0].id
+  const userId = user[0]?.id
 
   // console.log("THIS IS THE USER ID", user)
 

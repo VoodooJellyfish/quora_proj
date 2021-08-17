@@ -30,7 +30,7 @@ router.get('/:questionId', asyncHandler(async (req, res) => {
 
 router.put('/:questionId', validateQuestion, asyncHandler(async(req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
-  const questiontoUpdate = await Question.findByPk(questionId)
+  const questionToUpdate = await Question.findByPk(questionId)
   const {
     title, 
     description} = req.body
@@ -44,9 +44,21 @@ router.put('/:questionId', validateQuestion, asyncHandler(async(req, res) => {
   if (validatorErrors.isEmpty()) {
 			await questionToUpdate.update(question);
       console.log("THIS IS MY QUESTION", question)
-			return res.json(question)
+			return res.json(questionToUpdate)
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
+  }
+
+}))
+
+router.delete('/:questionId', asyncHandler(async (req, res) => {
+  let questionId = parseInt(req.params.questionId, 10);
+  const questionToDelete = await Question.findByPk(questionId)
+  if (questionToDelete) {
+    await questionToDelete.destroy()
+    return res.json(questionToDelete)
+  } else {
+    res.send("Question not found")
   }
 
 }))

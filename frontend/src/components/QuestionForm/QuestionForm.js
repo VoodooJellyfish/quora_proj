@@ -6,7 +6,7 @@ import { thunk_createQuestion } from '../../store/question';
 const CreateQuestionForm = () => {
   const questions = useSelector(state => Object.values(state.question));
   const user = useSelector(state => Object.values(state.session));
-  const userId = user[0].id
+  const userId = user[0]?.id
   const dispatch = useDispatch();
   const history = useHistory();
   const [title, setTitle] = useState("");
@@ -23,11 +23,9 @@ const CreateQuestionForm = () => {
       description,
       ownerId:userId
     };
-
-
     let createdQuestion = await dispatch(thunk_createQuestion(payload))
     if (createdQuestion) {
-      history.push(`/users/${userId}/`);
+      history.push(`/users/${userId}`);
     }
   };
   // const handleCancelClick = (e) => {

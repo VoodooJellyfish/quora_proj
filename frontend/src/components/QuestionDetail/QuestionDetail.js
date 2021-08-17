@@ -16,20 +16,20 @@ const QuestionDetails = () => {
   const questions = useSelector(state => Object.values(state.question));
 
   const user = useSelector(state => Object.values(state.session))
-  const userId = user[0].id
+  const userId = user[0]?.id
   console.log("Entire LIst", userId)
 
-  let questionChoice = questions.find(question => +question.id === +questionId)
+  let questionChoice = questions.find(question => +question?.id === +questionId)
 
   console.log("#####", questionChoice)
 
-  let canEdit = false
-  let canDelete = false
+  let hideEdit = true
+  let hideDelete = true
 
-  // if (questionChoice.id === userId) {
-  //   canEdit = true
-  //   canDelete = true
-  // }
+  if (questionChoice?.ownerId === userId) {
+    hideEdit = false
+    hideDelete = false
+  }
 
 
   // Use a 'react' hook and cause a side effect
@@ -40,9 +40,11 @@ const QuestionDetails = () => {
   return (
     <div>
       
-      {questionChoice.title}
-      {questionChoice.description}
-      <EditQuestionForm question={questionChoice}/>
+      {questionChoice?.title}
+      {questionChoice?.description}
+      <div hidden={hideEdit}>
+        <EditQuestionForm question={questionChoice} hideEdit={hideEdit} hideDelete={hideDelete}/>
+      </div>
     </div>
   );
 };

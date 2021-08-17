@@ -28,7 +28,7 @@ const QuestionsContainer = () => {
           {questions.map((question) => 
           <li>
             {/* {question.title} */}
-            <NavLink key={question?.id} to={`/questions/${question?.id}`}>{question.title}</NavLink>
+            <NavLink key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>
           </li>)}
       </ul>
       {/* <Route path="/questions/:questionId">
