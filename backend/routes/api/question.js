@@ -3,7 +3,7 @@ const router = express.Router();
 // Since we're doing database stuff, you'll want some kind of asyncHandler
 const asyncHandler = require('express-async-handler');
 const { User, Question, Answer } = require('../../db/models');
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const validateQuestion = [
@@ -27,6 +27,29 @@ router.get('/:questionId', asyncHandler(async (req, res) => {
   const question = await Question.findByPk(questionId)
   res.json(question);
 }));
+
+router.put('/:questionId', validateQuestion, asyncHandler(async(req, res) => {
+  let questionId = parseInt(req.params.questionId, 10);
+  const questiontoUpdate = await Question.findByPk(questionId)
+  const {
+    title, 
+    description} = req.body
+
+  const question = {
+    title, 
+    description
+  }
+  const validatorErrors = validationResult(req);
+
+  if (validatorErrors.isEmpty()) {
+			await questionToUpdate.update(question);
+      console.log("THIS IS MY QUESTION", question)
+			return res.json(question)
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
+  }
+
+}))
 
 
 // router.get('/new', asyncHandler(async(req, res) => {

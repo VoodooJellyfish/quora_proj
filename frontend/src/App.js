@@ -24,7 +24,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/questions">
+          <Route exact path='/'>
             <MainPage />
           </Route>
           <Route path="/questions/:questionId">

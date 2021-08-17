@@ -6,15 +6,31 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Import the thunk creator
 import { thunk_fetchQuestion } from '../../store/question';
+import EditQuestionForm from '../EditQuestionForm';
 
 const QuestionDetails = () => {
   // Declare variables from hooks
   const dispatch = useDispatch();
+
   const {questionId} = useParams()
   const questions = useSelector(state => Object.values(state.question));
-  console.log("Entire LIst", questions)
+
+  const user = useSelector(state => Object.values(state.session))
+  const userId = user[0].id
+  console.log("Entire LIst", userId)
+
   let questionChoice = questions.find(question => +question.id === +questionId)
-  console.log("Chosen Question", questionChoice)
+
+  console.log("#####", questionChoice)
+
+  let canEdit = false
+  let canDelete = false
+
+  // if (questionChoice.id === userId) {
+  //   canEdit = true
+  //   canDelete = true
+  // }
+
 
   // Use a 'react' hook and cause a side effect
   useEffect(() => {
@@ -23,7 +39,10 @@ const QuestionDetails = () => {
 
   return (
     <div>
+      
       {questionChoice.title}
+      {questionChoice.description}
+      <EditQuestionForm question={questionChoice}/>
     </div>
   );
 };

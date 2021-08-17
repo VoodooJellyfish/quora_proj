@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Question } = require('../../db/models');
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
@@ -78,6 +78,7 @@ router.post('/:userId/question', validateQuestion, asyncHandler(async (req, res)
 
   res.json(userQuestions);
 }));
+
 
 
 module.exports = router;
