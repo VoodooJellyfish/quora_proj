@@ -1,6 +1,6 @@
 import Navigation from '../Navigation/index.js';
 import QuestionsContainer from '../../components/QuestionsContainer';
-import UserQuestionList from '../UserProfile/UserProfile.js';
+import UserQuestionList from '../UserQuestionList/UserQuestionList.js';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import "./mainPage.css"

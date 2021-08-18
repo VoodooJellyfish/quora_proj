@@ -5,22 +5,16 @@ import { NavLink, Route, useParams } from 'react-router-dom';
 import { thunk_fetchUserQuestions } from '../../store/question';
 import { thunk_fetchUserAnswers } from '../../store/answer';
 
-import EditQuestionForm from '../EditQuestionForm';
+
 import '../QuestionsContainer/questionContainer.css'
 
-const UserQuestionList = () => {
+const UserCommentList = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => Object.values(state.session));
   const userId = user[0]?.id
-  const questions = useSelector(state => Object.values(state.question));
+
   const answers = useSelector(state => Object.values(state.answer))
-  let userQuestions = questions.filter(question => +question?.ownerId === +userId)
-
-  console.log("^^^^^^^^^", answers)
-
-  useEffect(() => {
-    dispatch(thunk_fetchUserQuestions(userId));
-  }, [userId, dispatch]);
+  let userAnswers = answers.filter(answer=> +answer?.userId === +userId)
 
   useEffect(() => {
     dispatch(thunk_fetchUserAnswers(userId));
@@ -29,19 +23,20 @@ const UserQuestionList = () => {
   return (
     <div id="main-content">
       <ul className="questionul">
-          {userQuestions?.map((question) => 
+          {userAnswers?.map((answer) => 
           <li className="listItem">
-            <div>{question.ownerId}</div>
+            <div>{answer.userId}</div>
             <div>
-              <NavLink className="question" key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>
+              <NavLink className="answer" key={answer?.id} to={`/answers/${answer?.id}`}>{answer?.answer}</NavLink>
             </div>
-            <div>Comments</div>
           </li>)}
       </ul>
       {/* <Route path="/questions/:questionId">
           <QuestionDetails/>
       </Route> */}
     </div>
-  );
+  )
+
 }
-export default UserQuestionList;
+
+export default UserCommentList;

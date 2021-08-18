@@ -32,7 +32,7 @@ export const thunk_fetchUserAnswers = (userId) => async (dispatch) => {
   dispatch(getAnswers(answers))
 }
 
-export const thunk_fetchQuestion = (answerId) => async (dispatch) => {
+export const thunk_fetchAnswer = (answerId) => async (dispatch) => {
   const res = await csrfFetch(`/api/answers/${answerId}`);
   if(res.ok) {
     const answer = await res.json();

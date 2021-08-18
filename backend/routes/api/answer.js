@@ -13,6 +13,12 @@ const validateAnswer = [
   handleValidationErrors
 ]
 
+router.get('/:answerId', asyncHandler(async (req, res) => {
+  let answerId = parseInt(req.params.answerId, 10);
+  const answer = await Answer.findByPk(answerId)
+  res.json(answer)
+}));
+
 router.put('/:answerId', validateAnswer, asyncHandler(async(req, res) => {
   let answerId = parseInt(req.params.answerId, 10);
   const answerToUpdate = await Answer.findByPk(answerId)

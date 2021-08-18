@@ -6,8 +6,10 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import MainPage from './components/Home_page'
 import QuestionDetails from "./components/QuestionDetail/QuestionDetail";
-import UserQuestionList from "./components/UserProfile/UserProfile";
 import CreateQuestionForm from "./components/QuestionForm/QuestionForm";
+
+import UserProfile from "./components/UserProfilePage/UserProfile";
+import AnswerDetail from "./components/AnswerDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,9 +33,13 @@ function App() {
             <QuestionDetails/>
           </Route>
           <Route path="/users/:userId">
-            <UserQuestionList/>
+            <UserProfile/>
             <CreateQuestionForm/>
-          </Route>  
+          </Route> 
+          <Route path="/answers/:answerId">
+            <AnswerDetail/>
+          </Route> 
+
         </Switch>
       )}
     </>
