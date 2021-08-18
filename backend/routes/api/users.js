@@ -2,11 +2,18 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Question } = require('../../db/models');
+const { User, Question, Answer } = require('../../db/models');
 const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
+
+const validateAnswer = [
+  check('answer')
+    .exists({checkFalsy: true})
+    .withMessage("Please provide content for your answer"),
+  handleValidationErrors
+]
 
 const validateSignup = [
   check('email')
@@ -61,6 +68,16 @@ router.get('/:userId', asyncHandler(async (req, res) => {
   res.json(userQuestions);
 }));
 
+router.get('/:userId/answers', asyncHandler(async (req, res) => {
+  let userId = parseInt(req.params.userId, 10);
+  const userAnswers = await Answer.findAll({
+    where: {
+      userId
+    },
+  })
+  res.json(userAnswers);
+}));
+
 router.post('/:userId/question', validateQuestion, asyncHandler(async (req, res) => {
   let userId = parseInt(req.params.userId, 10);
   const {title, description} = req.body
@@ -77,6 +94,23 @@ router.post('/:userId/question', validateQuestion, asyncHandler(async (req, res)
   }
 
   res.json(userQuestions);
+}));
+
+router.post('/:userId/questions/:questionId/answers', validateAnswer, asyncHandler(async (req, res) => {
+  let questionId = parseInt(req.params.questionId, 10);
+  let userId = parseInt(req.params.userId, 10);
+  const {answer} = req.body
+  
+  const newAnswer = Answer.build({
+    userId,
+    questionId,
+    answer,
+  })
+  const ValidatorErrors = validationResult(req)
+  if(ValidatorErrors.isEmpty()) {
+    await newAnswer.save()
+    res.json(newAnswer)
+  }
 }));
 
 

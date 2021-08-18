@@ -4,6 +4,7 @@ import QuestionDetails from '../QuestionDetail/QuestionDetail';
 // Import hooks from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, useParams } from 'react-router-dom';
+import './questionContainer.css'
 
 // Import the thunk creator
 import { fetchQuestions } from '../../store/question';
@@ -23,12 +24,15 @@ const QuestionsContainer = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <ul>
+    <div id="main-content">
+      <ul className="questionul">
           {questions.map((question) => 
-          <li>
-            {/* {question.title} */}
-            <NavLink key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>
+          <li className="listItem">
+            <div>{question.ownerId}</div>
+            <div className="question-square">
+              <NavLink className="question" key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>
+            </div>
+            <div>Comments</div>
           </li>)}
       </ul>
       {/* <Route path="/questions/:questionId">

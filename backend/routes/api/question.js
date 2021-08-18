@@ -13,6 +13,13 @@ const validateQuestion = [
   handleValidationErrors
 ]
 
+const validateAnswer = [
+  check('answer')
+    .exists({checkFalsy: true})
+    .withMessage("Please provide content for your answer"),
+  handleValidationErrors
+]
+
 // Create the API route here
 
 // GET /api/questions
@@ -25,10 +32,28 @@ router.get('', asyncHandler(async (req, res) => {
 router.get('/:questionId', asyncHandler(async (req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
   const question = await Question.findByPk(questionId)
+  const answers = await Answer.findAll({
+    where: {
+      questionId
+    }
+  })
   res.json(question);
+  res.json(answers)
 }));
 
-router.put('/:questionId', validateQuestion, asyncHandler(async(req, res) => {
+router.get('/:questionId/answers', asyncHandler(async (req, res) => {
+  let questionId = parseInt(req.params.questionId, 10);
+  const answers = await Answer.findAll({
+    where: {
+      questionId
+    }
+  })
+  res.json(answers)
+}));
+
+
+
+router.put('/:questionId', validateAnswer, asyncHandler(async(req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
   const questionToUpdate = await Question.findByPk(questionId)
   const {

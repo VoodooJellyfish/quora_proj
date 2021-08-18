@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+}
+/* 
+.navlist {
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  width: 100%;
+} */
+
+.profile-dropdown {
+}

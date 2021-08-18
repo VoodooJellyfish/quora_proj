@@ -14,8 +14,10 @@ const CreateQuestionForm = () => {
   
   const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
+  const hideForm = true
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
 
     const payload = {
@@ -26,8 +28,14 @@ const CreateQuestionForm = () => {
     let createdQuestion = await dispatch(thunk_createQuestion(payload))
     if (createdQuestion) {
       history.push(`/users/${userId}`);
+      reset()
     }
   };
+
+  const reset = () => {
+    setTitle("")
+    setDescription("")
+  }
   // const handleCancelClick = (e) => {
   //   e.preventDefault();
   //   hideForm();
@@ -35,7 +43,7 @@ const CreateQuestionForm = () => {
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} hidden={false}>
         <input
           type="text"
           placeholder="title"

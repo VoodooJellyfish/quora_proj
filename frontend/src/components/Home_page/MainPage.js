@@ -3,6 +3,7 @@ import QuestionsContainer from '../../components/QuestionsContainer';
 import UserQuestionList from '../UserProfile/UserProfile.js';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import "./mainPage.css"
 
 
 
@@ -23,9 +24,11 @@ const MainPage = () => {
 
   return (
     <>
-      <h2>List of Questions</h2>
+      <h2>Welcome</h2>
       <button onClick={directToUserQuestions}>Your Questions</button>
-      <QuestionsContainer/>
+      <div className="questionList">
+        <QuestionsContainer/>
+      </div>
     </>
   );
 };
