@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // Import the thunk creator
 import { thunk_fetchQuestion } from '../../store/question';
 import EditQuestionForm from '../EditQuestionForm';
+import CreateAnswerForm from '../CreateAnswerForm/CreateAnswerForm';
 
 const QuestionDetails = () => {
   // Declare variables from hooks
@@ -45,6 +46,7 @@ const QuestionDetails = () => {
       <div hidden={hideEdit}>
         <EditQuestionForm question={questionChoice} hideEdit={hideEdit} hideDelete={hideDelete}/>
       </div>
+      <CreateAnswerForm question={questionChoice}/>
     </div>
   );
 };
