@@ -30,7 +30,7 @@ const QuestionsContainer = () => {
       <ul className="questionul">
           {questions?.map((question) => 
           <li className="listItem">
-            <div>{question?.User.username}</div>
+            <div>{question.User ? question.User.username : []}</div>
             <div className="question-square">
               <NavLink className="question" key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>
             </div>

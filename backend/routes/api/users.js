@@ -90,10 +90,11 @@ router.post('/:userId/question', validateQuestion, asyncHandler(async (req, res)
   const ValidatorErrors = validationResult(req)
   if(ValidatorErrors.isEmpty()) {
     await question.save()
-    res.json(question)
+    let result = await Question.findByPk(question.id, {include:User})
+    return res.json(result)
   }
 
-  res.json(userQuestions);
+  res.json(question);
 }));
 
 router.post('/:userId/questions/:questionId/answers', validateAnswer, asyncHandler(async (req, res) => {

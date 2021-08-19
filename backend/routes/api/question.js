@@ -34,13 +34,13 @@ router.get('', asyncHandler(async (req, res) => {
 router.get('/:questionId', asyncHandler(async (req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
   const question = await Question.findByPk(questionId, {include:User})
-  const answers = await Answer.findAll({
-    where: {
-      questionId
-    }
-  })
+  // const answers = await Answer.findAll({
+  //   where: {
+  //     questionId
+  //   }
+  
   res.json(question);
-  res.json(answers)
+  // res.json(answers)
 }));
 
 router.get('/:questionId/answers', asyncHandler(async (req, res) => {
@@ -55,7 +55,7 @@ router.get('/:questionId/answers', asyncHandler(async (req, res) => {
 
 
 
-router.put('/:questionId', validateAnswer, asyncHandler(async(req, res) => {
+router.put('/:questionId', validateQuestion, asyncHandler(async(req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
   const questionToUpdate = await Question.findByPk(questionId)
   const {

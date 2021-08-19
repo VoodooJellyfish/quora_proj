@@ -6,7 +6,7 @@ import { thunk_createAnswer } from '../../store/answer';
 const CreateAnswerForm = ({question}) => {
 
 
-  const questionId = question.id
+  const questionId = question?.id
   const user = useSelector(state => Object.values(state.session));
   const userId = user[0]?.id
   const dispatch = useDispatch();

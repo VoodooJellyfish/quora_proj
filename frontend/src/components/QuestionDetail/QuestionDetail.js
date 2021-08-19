@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunk_fetchQuestion } from '../../store/question';
 import EditQuestionForm from '../EditQuestionForm';
 import CreateAnswerForm from '../CreateAnswerForm/CreateAnswerForm';
+import { fetchAnswers } from '../../store/answer';
 
 const QuestionDetails = () => {
   // Declare variables from hooks
