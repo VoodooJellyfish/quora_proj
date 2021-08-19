@@ -50,10 +50,6 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
 
-    // const demoUser = await User.findOne({
-    //   where:{ username: credential}
-    // })
-
     if (credential ==='Demo-lition') {
       const rand = Math.floor(Math.random() * 123456789);
 			const hashedPassword = await bcrypt.hash(password, 12);
@@ -66,22 +62,16 @@ router.post(
 
       await newDemo.save()
       const user = await User.login({
-        credential:user.username,
+        credential:newDemo.username,
         password:'password'
       })
-      if (!user) {
-      const err = new Error('Login failed');
-      err.status = 401;
-      err.title = 'Login failed';
-      err.errors = ['The provided credentials were invalid.'];
-      return next(err);
-    }
-    }
-    await setTokenCookie(res, user);
+    await setTokenCookie(res, newDemo);
 
     return res.json({
       user,
     });
+  }
+    
   }),
 );
 
