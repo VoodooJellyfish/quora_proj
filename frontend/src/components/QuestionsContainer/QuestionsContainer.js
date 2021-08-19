@@ -15,8 +15,10 @@ import { fetchQuestions } from '../../store/question';
 const QuestionsContainer = () => {
   // Declare variables from hooks
   const dispatch = useDispatch();
-  const questions = useSelector(state => Object.values(state.question));
-  // console.log(questions)
+  let questions = useSelector(state => Object.values(state.question));
+  questions = questions.slice(0,questions.length-1)
+  // console.log("@@@@@",questions[0]?.User.username)
+  console.log(questions)
 
   // Use a 'react' hook and cause a side effect
   useEffect(() => {
@@ -26,9 +28,9 @@ const QuestionsContainer = () => {
   return (
     <div id="main-content">
       <ul className="questionul">
-          {questions.map((question) => 
+          {questions?.map((question) => 
           <li className="listItem">
-            <div>{question.ownerId}</div>
+            <div>{question?.User.username}</div>
             <div className="question-square">
               <NavLink className="question" key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>
             </div>

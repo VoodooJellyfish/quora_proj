@@ -24,14 +24,16 @@ const validateAnswer = [
 
 // GET /api/questions
 router.get('', asyncHandler(async (req, res) => {
-  const questions = await Question.findAll();
+  const questions = await Question.findAll({
+    include: User
+  });
   res.json(questions);
 }));
 
 // GET /api/questions/:questionId
 router.get('/:questionId', asyncHandler(async (req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
-  const question = await Question.findByPk(questionId)
+  const question = await Question.findByPk(questionId, {include:User})
   const answers = await Answer.findAll({
     where: {
       questionId
