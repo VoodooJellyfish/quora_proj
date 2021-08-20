@@ -9,6 +9,7 @@ import { thunk_fetchQuestion } from '../../store/question';
 import EditQuestionForm from '../EditQuestionForm';
 import CreateAnswerForm from '../CreateAnswerForm/CreateAnswerForm';
 import { fetchAnswers } from '../../store/answer';
+import AnswersList from '../AnswerList';
 
 const QuestionDetails = () => {
   // Declare variables from hooks
@@ -21,7 +22,7 @@ const QuestionDetails = () => {
   const userId = user[0]?.id
   console.log("Entire LIst", userId)
 
-  let questionChoice = questions.find(question => +question?.id === +questionId)
+  let questionChoice = questions?.find(question => +question?.id === +questionId)
 
   console.log("#####", questionChoice)
 
@@ -36,14 +37,24 @@ const QuestionDetails = () => {
 
   // Use a 'react' hook and cause a side effect
   useEffect(() => {
-    dispatch(thunk_fetchQuestion(questionId));
+      dispatch(thunk_fetchQuestion(questionId));
   }, [questionId, dispatch]);
 
   return (
-    <div>
-      
-      {questionChoice?.title}
-      {questionChoice?.description}
+    <div className= "detailsContainer">
+      <div>
+        <div>
+          {questionChoice?.User ? questionChoice?.User.username : []}
+        </div>
+        <div className="questionChoice-square">
+          {questionChoice?.title}
+          {questionChoice?.description}     
+        </div>
+        <div>
+          {questionChoice?.createdAt}
+        </div>
+      </div>
+      <AnswersList question={questionChoice}/>
       <div hidden={hideEdit}>
         <EditQuestionForm question={questionChoice} hideEdit={hideEdit} hideDelete={hideDelete}/>
       </div>

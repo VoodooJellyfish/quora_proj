@@ -24,11 +24,10 @@ const UserQuestionList = () => {
       <ul className="questionul">
           {userQuestions?.map((question) => 
           <li className="listItem">
-            <div>{question.ownerId}</div>
+            <div>{question.createdAt}</div>
             <div>
               <NavLink className="question" key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>
             </div>
-            <div>Comments</div>
           </li>)}
       </ul>
 

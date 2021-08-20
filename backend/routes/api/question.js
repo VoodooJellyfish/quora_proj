@@ -47,8 +47,9 @@ router.get('/:questionId/answers', asyncHandler(async (req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
   const answers = await Answer.findAll({
     where: {
-      questionId
-    }
+      questionId,
+    },
+    include:User
   })
   res.json(answers)
 }));

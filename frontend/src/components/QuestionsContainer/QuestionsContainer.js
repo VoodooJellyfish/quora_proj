@@ -34,7 +34,7 @@ const QuestionsContainer = () => {
             <div className="question-square">
               <NavLink className="question" key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>
             </div>
-            <div>Comments</div>
+            <div>{question?.createdAt}</div>
           </li>)}
       </ul>
       {/* <Route path="/questions/:questionId">

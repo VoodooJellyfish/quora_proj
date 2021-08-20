@@ -5,21 +5,17 @@ import { thunk_createAnswer } from '../../store/answer';
 
 const CreateAnswerForm = ({question}) => {
 
-
   const questionId = question?.id
-  const user = useSelector(state => Object.values(state.session));
-  const userId = user[0]?.id
+  const user = useSelector(state=>state.session.user)
+  const userId = user?.id
   const dispatch = useDispatch();
   const history = useHistory();
   const [answer, setAnswer] = useState("");
-
-  
   const updateAnswer = (e) => setAnswer(e.target.value);
 
   const handleSubmit = async (e) => {
     
     e.preventDefault();
-
     const payload = {
       answer,
       userId,
@@ -27,7 +23,7 @@ const CreateAnswerForm = ({question}) => {
     };
     let createdAnswer= await dispatch(thunk_createAnswer(payload))
     if (createdAnswer) {
-      history.push(`/users/${userId}`);
+      history.push(`/questions/${questionId}`);
       reset()
     }
   };
@@ -35,17 +31,13 @@ const CreateAnswerForm = ({question}) => {
   const reset = () => {
     setAnswer("")
   }
-  // const handleCancelClick = (e) => {
-  //   e.preventDefault();
-  //   hideForm();
-  // };
 
   return (
     <section>
     <form onSubmit={handleSubmit} hidden={false}>
         <input
           type="text"
-          placeholder="title"
+          placeholder="Type answer here. . ."
           value={answer}
           onChange={updateAnswer} />
         <button type="submit">Create new Answer</button>

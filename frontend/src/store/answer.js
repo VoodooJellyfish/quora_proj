@@ -95,7 +95,7 @@ const initialState = {
 const answersReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ANSWERS:
-      const newState = { ...state };
+      const newState = {...state};
       action.answers.forEach(answer => {
         newState[answer.id] = answer;
       });
@@ -121,7 +121,7 @@ const answersReducer = (state = initialState, action) => {
     case DELETE_ANSWER: {
       return {
         list: [
-          ...state.list.filter(answer => answer !== action.answer)
+          ...state.list?.filter(answer => answer !== action.answer)
         ]
       }
       

@@ -25,7 +25,7 @@ const MainPage = () => {
   return (
     <>
       <h2>Welcome</h2>
-      <button onClick={directToUserQuestions}>Your Questions</button>
+      <button onClick={directToUserQuestions}>Your Contributions</button>
       <div className="questionList">
         <QuestionsContainer/>
       </div>

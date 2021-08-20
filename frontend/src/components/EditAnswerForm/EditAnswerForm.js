@@ -56,13 +56,13 @@ const EditAnswerForm = ({comment, hideEdit, hideDelete}) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="title"
+          placeholder="your answer. . ."
           value={answer}
           onChange={updateAnswer} />
         <button hidden={hideEdit} type="submit">Submit Edit</button>
       </form>
       <form onSubmit={handleDelete}>
-        <button hidden={hideDelete} type="submit">Delete Question</button>
+        <button hidden={hideDelete} type="submit">Delete Answer</button>
       </form>
     </section>
   );

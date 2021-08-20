@@ -26,12 +26,12 @@ function LoginForm() {
   }
 
   return (
-    <div>
+    <div className="loginContainer">
     
       <form className="Form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className='errors' key={idx}>{error}</li>
           ))}
         </ul>
         <div className="container"></div>
@@ -53,12 +53,12 @@ function LoginForm() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="loginButton" type="submit">Log In</button>
       </form>
-      <form onSubmit={handleDemo}>
+      <form className="demoForm" onSubmit={handleDemo}>
             <input type="hidden" name="username" value="Demo-lition"></input>
             <input type="hidden" name="password" value="password"></input>
-            <button type="submit">Login as Demo User</button>
+            <button className="loginButton" type="submit">Log in as Demo User</button>
       </form>
     </div>
 
