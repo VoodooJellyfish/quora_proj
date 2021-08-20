@@ -1,0 +1,21 @@
+.submitContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.submitElement {
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.Submit {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

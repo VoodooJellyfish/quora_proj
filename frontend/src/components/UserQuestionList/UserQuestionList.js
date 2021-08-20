@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, useParams } from 'react-router-dom';
-
+import CreateQuestionForm from '../QuestionForm/QuestionForm';
 import { thunk_fetchUserQuestions } from '../../store/question';
 
 
@@ -30,6 +30,7 @@ const UserQuestionList = () => {
             </div>
           </li>)}
       </ul>
+      <CreateQuestionForm/>
 
       {/* <Route path="/questions/:questionId">
           <QuestionDetails/>

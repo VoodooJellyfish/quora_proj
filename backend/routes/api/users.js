@@ -74,10 +74,11 @@ router.get('/:userId/answers', asyncHandler(async (req, res) => {
     where: {
       userId
     },
+    include:Question
   })
   res.json(userAnswers);
 }));
-
+//getting all answers for a User
 router.post('/:userId/question', validateQuestion, asyncHandler(async (req, res) => {
   let userId = parseInt(req.params.userId, 10);
   const {title, description} = req.body
@@ -96,7 +97,7 @@ router.post('/:userId/question', validateQuestion, asyncHandler(async (req, res)
 
   res.json(question);
 }));
-
+//posting new Answer
 router.post('/:userId/questions/:questionId/answers', validateAnswer, asyncHandler(async (req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
   let userId = parseInt(req.params.userId, 10);
@@ -110,7 +111,8 @@ router.post('/:userId/questions/:questionId/answers', validateAnswer, asyncHandl
   const ValidatorErrors = validationResult(req)
   if(ValidatorErrors.isEmpty()) {
     await newAnswer.save()
-    let result = await Answer.findByPk(newAnswer.id, {include:User})
+    let result = await Answer.findByPk(newAnswer.id, {include: 
+      [{model:User}, {model:Question}]})
     return res.json(result)
   }
   res.json(newAnswer)

@@ -58,7 +58,7 @@ router.get('/:questionId/answers', asyncHandler(async (req, res) => {
 
 router.put('/:questionId', validateQuestion, asyncHandler(async(req, res) => {
   let questionId = parseInt(req.params.questionId, 10);
-  const questionToUpdate = await Question.findByPk(questionId)
+  const questionToUpdate = await Question.findByPk(questionId, {include:User})
   const {
     title, 
     description} = req.body
@@ -71,7 +71,6 @@ router.put('/:questionId', validateQuestion, asyncHandler(async(req, res) => {
 
   if (validatorErrors.isEmpty()) {
 			await questionToUpdate.update(question);
-      console.log("THIS IS MY QUESTION", question)
 			return res.json(questionToUpdate)
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);

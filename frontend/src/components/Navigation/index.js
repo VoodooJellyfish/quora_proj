@@ -10,18 +10,13 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
 
-  const directToUserQuestions = () => {
-  let path = `/users/${sessionUser?.id}`
-  history.push(path)
-  }
-
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <div>
         <ProfileButton user={sessionUser} />
-      <button onClick={directToUserQuestions}>Your Contributions</button>
+        
       </div>
     );
   } else {

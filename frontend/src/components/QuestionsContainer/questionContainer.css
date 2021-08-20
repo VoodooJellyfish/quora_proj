@@ -23,6 +23,9 @@
   background-color: white;
   border-radius: 4px;
 }
+/* .listItem:hover {
+  background-color: #f7f7f7;
+} */
 
 .question {
   text-decoration: none;

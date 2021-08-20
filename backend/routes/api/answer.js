@@ -15,13 +15,13 @@ const validateAnswer = [
 
 router.get('/:answerId', asyncHandler(async (req, res) => {
   let answerId = parseInt(req.params.answerId, 10);
-  const answer = await Answer.findByPk(answerId)
+  const answer = await Answer.findByPk(answerId, {include:Question})
   res.json(answer)
 }));
 
 router.put('/:answerId', validateAnswer, asyncHandler(async(req, res) => {
   let answerId = parseInt(req.params.answerId, 10);
-  const answerToUpdate = await Answer.findByPk(answerId)
+  const answerToUpdate = await Answer.findByPk(answerId, {include:Question})
   const {
     answer
   } = req.body
@@ -33,7 +33,7 @@ router.put('/:answerId', validateAnswer, asyncHandler(async(req, res) => {
 
   if (validatorErrors.isEmpty()) {
 			await answerToUpdate.update(newAnswer);
-      console.log("THIS IS MY Answer", newAnswer)
+      // console.log("THIS IS MY Answer", newAnswer)
 			return res.json(answerToUpdate)
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
@@ -44,7 +44,7 @@ router.put('/:answerId', validateAnswer, asyncHandler(async(req, res) => {
 
 router.delete('/:answerId', asyncHandler(async (req, res) => {
   let answerId = parseInt(req.params.answerId, 10);
-  const answerToDelete = await Answer.findByPk(answerId)
+  const answerToDelete = await Answer.findByPk(answerId, {include:Question})
   if (answerToDelete) {
     await answerToDelete.destroy()
     return res.json(answerToDelete)

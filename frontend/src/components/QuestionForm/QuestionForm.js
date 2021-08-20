@@ -2,6 +2,7 @@ import { useEffect, useImperativeHandle, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { thunk_createQuestion } from '../../store/question';
+import "./QuestionForm.css"
 
 const CreateQuestionForm = () => {
   const questions = useSelector(state => Object.values(state.question));
@@ -43,18 +44,26 @@ const CreateQuestionForm = () => {
 
   return (
     <section>
-    <form onSubmit={handleSubmit} hidden={false}>
+    <form className="submitContainer" onSubmit={handleSubmit} hidden={false}>
+      <div className="submitElement">
+        
         <input
           type="text"
-          placeholder="title"
+          required={true}
+          placeholder="Ask question here..."
           value={title}
           onChange={updateTitle} />
-        <input
-          type="text"
-          placeholder=""
-          value={description}
-          onChange={updateDescription} />
-        <button type="submit">Create new Question</button>
+        </div>
+        {/* <div>
+          <input
+            type="text-area"
+            placeholder="Elaborate on your question here. . ."
+            value={description}
+            onChange={updateDescription} />
+        </div> */}
+        <div className="submitElement">
+          <button className="Submit" type="submit">Create new Question</button>
+        </div>
         {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
       </form>
     </section>

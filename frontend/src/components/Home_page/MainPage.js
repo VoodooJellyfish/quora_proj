@@ -23,13 +23,13 @@ const MainPage = () => {
 
 
   return (
-    <>
-      <h2>Welcome</h2>
-      <button onClick={directToUserQuestions}>Your Contributions</button>
+    <div className="home">
+      <div><h1>Welcome</h1></div>
+      <div><button className='btn' onClick={directToUserQuestions}>Go to your profile</button></div>
       <div className="questionList">
         <QuestionsContainer/>
       </div>
-    </>
+    </div>
   );
 };
 
