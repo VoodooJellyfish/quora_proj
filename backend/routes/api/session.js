@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
@@ -41,6 +42,36 @@ router.post(
     return res.json({
       user,
     });
+  }),
+);
+
+router.post(
+  '/demo',
+  asyncHandler(async (req, res, next) => {
+    const { credential, password } = req.body;
+
+    if (credential ==='Demo-lition') {
+      const rand = Math.floor(Math.random() * 123456789);
+			const hashedPassword = await bcrypt.hash(password, 12);
+
+      const newDemo = await User.build({
+        username: `demo${rand}`,
+        email: `demo${rand}@demo.com`,
+        hashedPassword:hashedPassword
+      })
+
+      await newDemo.save()
+      const user = await User.login({
+        credential:newDemo.username,
+        password:'password'
+      })
+    await setTokenCookie(res, newDemo);
+
+    return res.json({
+      user,
+    });
+  }
+    
   }),
 );
 

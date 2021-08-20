@@ -8,7 +8,7 @@ module.exports = {
     questionId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
-    answer: 'My 13 year daughter does not want hair anymore. She wants a clean shave on her head. What should I do?',
+    answer: 'I think that you should let her be her own person and in control of your own hair. If you are embarrassed by her look than it seems like you have the problem and not her.',
   },
     {
     userId: 2,

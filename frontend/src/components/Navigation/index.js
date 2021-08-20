@@ -8,6 +8,7 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -17,18 +18,23 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/signup"><i className="fas fa-user-plus"></i></NavLink>
+        {/* <form onSubmit={handleSubmit}>
+
+        </form> */}
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className="navbar">
+      {/* <ul className="navlist">
+        <li> */}
+          <NavLink exact to="/"><i className="fas fa-home"></i></NavLink>
+          {isLoaded && sessionLinks}
+        {/* </li>
+      </ul> */}
+    </div>
   );
 }
 

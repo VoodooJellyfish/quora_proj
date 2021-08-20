@@ -20,35 +20,47 @@ function LoginForm() {
     );
   };
 
+  const handleDemo = (e) => {
+    e.preventDefault()
+    return dispatch(sessionActions.thunk_loginDemo({credential:"Demo-lition",password:"password"}))
+  }
+
   return (
+    <div className="loginContainer">
     
-    <form className="Form" onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <div className="container"></div>
-      <label>
-        Username or Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+      <form className="Form" onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => (
+            <li className='errors' key={idx}>{error}</li>
+          ))}
+        </ul>
+        <div className="container"></div>
+        <label>
+          Username or Email
+          <input
+            type="text"
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+        <button className="loginButton" type="submit">Log In</button>
+      </form>
+      <form className="demoForm" onSubmit={handleDemo}>
+            <input type="hidden" name="username" value="Demo-lition"></input>
+            <input type="hidden" name="password" value="password"></input>
+            <button className="loginButton" type="submit">Log in as Demo User</button>
+      </form>
+    </div>
 
   );
 }
