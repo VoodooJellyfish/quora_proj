@@ -13,9 +13,9 @@
   list-style: none;
 } */
 .listItem {
-  margin: 20px;
+  /* margin: 20px; */
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
   border: 1px solid #ccc;
   padding-left: 16px;
   padding-right: 16px;
@@ -32,6 +32,9 @@
 
 .question:hover {
   text-decoration: underline;
+}
+.bottom {
+  align-self: end;
 }
 
 body {

@@ -11,10 +11,11 @@ const AnswersList = ({question}) => {
   // Declare variables from hooks
   const dispatch = useDispatch();
   // let questions = useSelector(state => Object.values(state.question));
-  let answers= useSelector(state => Object.values(state.answer));
+  let answers = useSelector(state => Object.values(state.answer));
+  let questionAnswers = answers?.filter(answer => +answer?.questionId === +question?.id)
   // questions = questions.slice(0,questions.length-1)
   // console.log("@@@@@",questions[0]?.User.username)
-  console.log(answers)
+  console.log("@@@@@", questionAnswers)
 
   // Use a 'react' hook and cause a side effect
   useEffect(() => {
@@ -27,7 +28,7 @@ const AnswersList = ({question}) => {
   return (
     <div id="main-content">
       <ul className="questionul">
-          {answers?.map((answer) => 
+          {questionAnswers?.map((answer) => 
           <li className="listItem">
             <div>{answer.User ? answer.User.username : []}</div>
             <div className="question-square">
