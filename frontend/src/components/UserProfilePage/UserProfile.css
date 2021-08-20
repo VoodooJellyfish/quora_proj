@@ -1,0 +1,27 @@
+.ProfileContainer {
+  margin: 0px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.toggleButtons {
+  /* align-self: center; */
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.toggleButtons > button {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 0px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  place-self: center;
+}
+
+.toggleContainer {
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+}

@@ -3,3 +3,21 @@
   align-items: center;
   justify-content: center;
 } */
+
+.home {
+  display: grid;
+  grid-template-rows: 1fr 1fr 70fr;
+}
+.home > div {
+  justify-self: center;
+}
+.btn {
+  width: 200px;
+  background-color: #b92b27;
+  color: white;
+  padding: 14px 20px;
+  margin: 0px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

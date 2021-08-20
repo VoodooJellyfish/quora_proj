@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunk_editQuestion, thunk_deleteQuestion } from '../../store/question';
+import "./EditQuestionForm.css"
 
 const EditQuestionForm = ({question, hideEdit, hideDelete}) => {
   const history = useHistory()
@@ -47,29 +48,34 @@ const EditQuestionForm = ({question, hideEdit, hideDelete}) => {
   }
 
   // const handleCancelClick = (e) => {
-  //   e.preventDefault();
+  //   e.preventDefault();s
   //   hideForm();
   // };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="title"
-          value={title}
-          onChange={updateTitle} />
-        <input
-          type="text"
-          placeholder="Name"
-          value={description}
-          onChange={updateDescription}/> 
-        <button hidden={hideEdit} type="submit">Submit Edit</button>
+    <section className="editContainer">
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Edit Question here..."
+            value={title}
+            onChange={updateTitle} />
+          {/* <input
+            type="text"
+            placeholder=""
+            value={description}
+            onChange={updateDescription}/>  */}
+          <button class="edit-btn" hidden={hideEdit} type="submit">Submit Edit</button>
+      
         {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
       </form>
-      <form onSubmit={handleDelete}>
-        <button hidden={hideDelete} type="submit">Delete Question</button>
-      </form>
+    </div>
+      <div>
+        <form onSubmit={handleDelete}>
+          <button class="del-btn" hidden={hideDelete} type="submit">Delete Question</button>
+        </form>
+      </div>
     </section>
   );
 };

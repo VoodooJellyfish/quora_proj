@@ -10,6 +10,7 @@ import EditQuestionForm from '../EditQuestionForm';
 import CreateAnswerForm from '../CreateAnswerForm/CreateAnswerForm';
 import { fetchAnswers } from '../../store/answer';
 import AnswersList from '../AnswerList';
+import "./QuestionDetail.css"
 
 const QuestionDetails = () => {
   // Declare variables from hooks
@@ -42,23 +43,29 @@ const QuestionDetails = () => {
 
   return (
     <div className= "detailsContainer">
-      <div>
+      <div className="S-question">
         <div>
-          {questionChoice?.User ? questionChoice?.User.username : []}
+          Submitted By: {questionChoice?.User ? questionChoice?.User.username : []}
         </div>
         <div className="questionChoice-square">
           {questionChoice?.title}
           {questionChoice?.description}     
         </div>
         <div>
-          {questionChoice?.createdAt}
+          Submitted On: {questionChoice?.createdAt}
         </div>
       </div>
-      <AnswersList question={questionChoice}/>
-      <div hidden={hideEdit}>
-        <EditQuestionForm question={questionChoice} hideEdit={hideEdit} hideDelete={hideDelete}/>
+      <div>
+        <AnswersList question={questionChoice}/>
       </div>
-      <CreateAnswerForm question={questionChoice}/>
+      <div className ="editButtons">
+        <div hidden={hideEdit}>
+          <EditQuestionForm question={questionChoice} hideEdit={hideEdit} hideDelete={hideDelete}/>
+        </div>
+        <div>
+          <CreateAnswerForm question={questionChoice}/>
+        </div>
+      </div>
     </div>
   );
 };

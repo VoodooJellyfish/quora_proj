@@ -6,6 +6,13 @@
   height: 50px;
   background-color: white;
 }
+
+.modal-button {
+  color: #333;
+  background-color: white;
+  border: none;
+  height: 20px;
+}
 /* 
 .navlist {
   display: flex;
@@ -13,6 +20,30 @@
   align-items: space-between;
   width: 100%;
 } */
+.dropdown-menu {
+  background-color: #ccc;
+  position: relative;
+  top: 100px;
+  height: 150px;
+  border-radius: 10px;
+}
 
 .profile-dropdown {
+  list-style: none;
+  padding: 10px;
+}
+
+.profile-dropdown > li {
+  margin: 10px;
+}
+
+.modalButton {
+  width: 100px;
+  height: 30px;
+  background-color: #b92b27;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  left: 60px;
 }

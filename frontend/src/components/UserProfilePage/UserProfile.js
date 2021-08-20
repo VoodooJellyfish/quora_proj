@@ -3,26 +3,32 @@ import { useEffect } from "react";
 import { useState } from "react";
 import UserCommentList from "../UserComments/UserComments";
 import UserQuestionList from "../UserQuestionList";
+import "./UserProfile.css"
 
 const UserProfile = () => {
 
-const [hiddenQuestions, setQuestionsHidden] = useState(false)
-const[hiddenAnswers, setAnswersHidden] = useState(false)
+const [hiddenQuestions, setQuestionsHidden] = useState(true)
+const[hiddenAnswers, setAnswersHidden] = useState(true)
 
 const hideQuestions= () => {
-  setQuestionsHidden(true)
+  setQuestionsHidden(!hiddenQuestions)
 }
 const hideAnswers= () => {
-  setAnswersHidden(true)
+  setAnswersHidden(!hiddenAnswers)
 }
 
   return(
     
-    <div>
-      <button onClick={hideQuestions}>Your Questions</button>
-      <button onClick={hideAnswers}>Your Answers</button>
-      <UserQuestionList hidden={hiddenQuestions}/>
-      <UserCommentList hidden={hiddenAnswers}/>
+    <div className="toggleContainer">
+      <div className="toggleButtons">
+        <button className="toggle" onClick={hideQuestions}>Your Questions</button>
+
+        <button className="toggle" onClick={hideAnswers}>Your Answers</button>
+      </div>
+      <div className="ProfileContainer">
+        {hiddenQuestions ? <div></div> : <UserQuestionList/>}
+        {hiddenAnswers ? <div></div> : <UserCommentList/>}
+      </div>
     </div>
   )
 }

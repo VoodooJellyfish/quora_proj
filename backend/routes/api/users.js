@@ -74,6 +74,7 @@ router.get('/:userId/answers', asyncHandler(async (req, res) => {
     where: {
       userId
     },
+    include:Question
   })
   res.json(userAnswers);
 }));

@@ -1,0 +1,23 @@
+.detailsContainer {
+  display: grid;
+  /* grid-template-rows: 1fr 1fr 1fr; */
+}
+
+.S-question {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-top: 40px;
+  margin-left: 15px;
+}
+
+.editButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.questionChoice-square {
+  color: black;
+  font-weight: bold;
+}

@@ -1,0 +1,26 @@
+.edit-btn {
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.del-btn {
+  background-color: #b92b27;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.editContainer > div {
+  margin: 10px;
+}
+
+.ctn {
+  position: relative;
+  top: 8px;
+}

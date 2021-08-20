@@ -34,7 +34,6 @@ function App() {
           </Route>
           <Route path="/users/:userId">
             <UserProfile/>
-            <CreateQuestionForm/>
           </Route> 
           <Route path="/answers/:answerId">
             <AnswerDetail/>
