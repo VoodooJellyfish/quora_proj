@@ -1,0 +1,10 @@
+.formForm {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.edit5 {
+  width: 200px;
+  position: relative;
+  left: 50px;
+}

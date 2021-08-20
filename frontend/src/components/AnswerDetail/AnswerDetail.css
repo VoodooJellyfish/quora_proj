@@ -1,0 +1,10 @@
+.answerDetail {
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+}
+
+.answerWords {
+  justify-self: center;
+  margin-top: 15px;
+  font-weight: bold;
+}

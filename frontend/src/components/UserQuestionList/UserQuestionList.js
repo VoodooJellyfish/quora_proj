@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink,} from 'react-router-dom';
 import CreateQuestionForm from '../QuestionForm/QuestionForm';
 import { thunk_fetchUserQuestions } from '../../store/question';
 
@@ -23,7 +23,7 @@ const UserQuestionList = () => {
     <div id="main-content">
       <ul className="questionul">
           {userQuestions?.map((question) => 
-          <li className="listItem">
+          <li key={question?.id} className="listItem">
             <div>{question.createdAt}</div>
             <div>
               <NavLink className="question" key={question?.id} to={`/questions/${question?.id}`}>{question?.title}</NavLink>

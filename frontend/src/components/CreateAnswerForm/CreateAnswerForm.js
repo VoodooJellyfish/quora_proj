@@ -1,6 +1,6 @@
-import { useEffect, useImperativeHandle, useState } from 'react';
+import {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { thunk_createAnswer } from '../../store/answer';
 import "./CreateAnswer.css"
 
@@ -35,13 +35,13 @@ const CreateAnswerForm = ({question}) => {
 
   return (
     <section className="ctn">
-    <form onSubmit={handleSubmit} hidden={false}>
+    <form  className="formForm" onSubmit={handleSubmit} hidden={false}>
         <input
           type="text"
           placeholder="Type answer here. . ."
           value={answer}
           onChange={updateAnswer} />
-        <button className="edit-btn" type="submit">Create Answer</button>
+        <button className="edit-btn edit5" type="submit">Create Answer</button>
         {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
       </form>
     </section>

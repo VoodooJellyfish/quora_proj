@@ -1,7 +1,7 @@
-import Navigation from '../Navigation/index.js';
+
 import QuestionsContainer from '../../components/QuestionsContainer';
-import UserQuestionList from '../UserQuestionList/UserQuestionList.js';
-import { Link, useHistory } from 'react-router-dom';
+
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import "./mainPage.css"
 
@@ -13,12 +13,19 @@ const MainPage = () => {
 
   const user = useSelector(state => Object.values(state.session));
   const userId = user[0]?.id
+  const sessionUser = useSelector(state => state.session.user);
 
   // console.log("THIS IS THE USER ID", user)
 
   const directToUserQuestions = () => {
-  let path = `/users/${userId}`
-  history.push(path)
+  
+  if (sessionUser) {
+    let path = `/users/${userId}`
+    history.push(path)
+  } else {
+    history.push('/signup')
+  }
+  
   }
 
 
