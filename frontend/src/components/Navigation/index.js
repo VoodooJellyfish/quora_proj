@@ -1,18 +1,28 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
+  const history = useHistory()
   const sessionUser = useSelector(state => state.session.user);
+
+
+  const directToUserQuestions = () => {
+  let path = `/users/${sessionUser?.id}`
+  history.push(path)
+  }
 
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div>
+        <ProfileButton user={sessionUser} />
+      <button onClick={directToUserQuestions}>Your Contributions</button>
+      </div>
     );
   } else {
     sessionLinks = (
