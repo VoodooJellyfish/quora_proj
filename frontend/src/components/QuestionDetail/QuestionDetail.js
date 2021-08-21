@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunk_fetchQuestion } from '../../store/question';
 import EditQuestionForm from '../EditQuestionForm';
 import CreateAnswerForm from '../CreateAnswerForm/CreateAnswerForm';
-import { fetchAnswers } from '../../store/answer';
+
 import AnswersList from '../AnswerList';
 import "./QuestionDetail.css"
 
@@ -21,11 +21,11 @@ const QuestionDetails = () => {
 
   const user = useSelector(state => Object.values(state.session))
   const userId = user[0]?.id
-  console.log("Entire LIst", userId)
+  // console.log("Entire LIst", userId)
 
   let questionChoice = questions?.find(question => +question?.id === +questionId)
 
-  console.log("#####", questionChoice)
+  // console.log("#####", questionChoice)
 
   let hideEdit = true
   let hideDelete = true
@@ -59,10 +59,10 @@ const QuestionDetails = () => {
         <AnswersList question={questionChoice}/>
       </div>
       <div className ="editButtons">
-        <div hidden={hideEdit}>
+        <div  hidden={hideEdit}>
           <EditQuestionForm question={questionChoice} hideEdit={hideEdit} hideDelete={hideDelete}/>
         </div>
-        <div>
+        <div className="edit3">
           <CreateAnswerForm question={questionChoice}/>
         </div>
       </div>

@@ -6,7 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import MainPage from './components/Home_page'
 import QuestionDetails from "./components/QuestionDetail/QuestionDetail";
-import CreateQuestionForm from "./components/QuestionForm/QuestionForm";
+
 
 import UserProfile from "./components/UserProfilePage/UserProfile";
 import AnswerDetail from "./components/AnswerDetail";

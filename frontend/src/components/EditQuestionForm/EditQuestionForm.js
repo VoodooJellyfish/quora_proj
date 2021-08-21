@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunk_editQuestion, thunk_deleteQuestion } from '../../store/question';
@@ -37,7 +37,6 @@ const EditQuestionForm = ({question, hideEdit, hideDelete}) => {
     if (updatedQuestion) {
       // hideForm();
       history.push(`/users/${userId}`)
-      console.log("SUCCESS EDIT")
     }
   };
 
@@ -61,19 +60,19 @@ const EditQuestionForm = ({question, hideEdit, hideDelete}) => {
             placeholder="Edit Question here..."
             value={title}
             onChange={updateTitle} />
-          {/* <input
+          <input
             type="text"
-            placeholder=""
+            placeholder="Add more details..."
             value={description}
-            onChange={updateDescription}/>  */}
-          <button class="edit-btn" hidden={hideEdit} type="submit">Submit Edit</button>
+            onChange={updateDescription}/> 
+          <button className="edit-btn centered" hidden={hideEdit} type="submit">Submit Edit</button>
       
         {/* <button type="button" onClick={handleCancelClick}>Cancel</button> */}
       </form>
     </div>
       <div>
         <form onSubmit={handleDelete}>
-          <button class="del-btn" hidden={hideDelete} type="submit">Delete Question</button>
+          <button className="del-btn" hidden={hideDelete} type="submit">Delete Question</button>
         </form>
       </div>
     </section>

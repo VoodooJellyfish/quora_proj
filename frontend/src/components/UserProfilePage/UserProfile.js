@@ -1,5 +1,5 @@
 
-import { useEffect } from "react";
+
 import { useState } from "react";
 import UserCommentList from "../UserComments/UserComments";
 import UserQuestionList from "../UserQuestionList";
@@ -7,8 +7,8 @@ import "./UserProfile.css"
 
 const UserProfile = () => {
 
-const [hiddenQuestions, setQuestionsHidden] = useState(true)
-const[hiddenAnswers, setAnswersHidden] = useState(true)
+const [hiddenQuestions, setQuestionsHidden] = useState(false)
+const[hiddenAnswers, setAnswersHidden] = useState(false)
 
 const hideQuestions= () => {
   setQuestionsHidden(!hiddenQuestions)

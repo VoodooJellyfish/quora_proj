@@ -24,3 +24,9 @@
   position: relative;
   top: 8px;
 }
+
+.centered {
+  width: 135px;
+  position: relative;
+  left: 105px;
+}

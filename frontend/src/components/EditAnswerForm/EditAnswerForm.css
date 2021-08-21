@@ -1,0 +1,14 @@
+.editContainer {
+  margin: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.editContainer > div {
+  justify-self: center;
+}
+
+.formE {
+  position: relative;
+  left: 110px;
+}

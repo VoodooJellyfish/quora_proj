@@ -1,11 +1,11 @@
-import { useEffect, useImperativeHandle, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { thunk_createQuestion } from '../../store/question';
 import "./QuestionForm.css"
 
 const CreateQuestionForm = () => {
-  const questions = useSelector(state => Object.values(state.question));
+
   const user = useSelector(state => Object.values(state.session));
   const userId = user[0]?.id
   const dispatch = useDispatch();
@@ -14,8 +14,8 @@ const CreateQuestionForm = () => {
   const [description, setDescription] = useState('');
   
   const updateTitle = (e) => setTitle(e.target.value);
-  const updateDescription = (e) => setDescription(e.target.value);
-  const hideForm = true
+  // const updateDescription = (e) => setDescription(e.target.value);
+  // const hideForm = true
 
   const handleSubmit = async (e) => {
     
@@ -46,7 +46,7 @@ const CreateQuestionForm = () => {
     <section>
     <form className="submitContainer" onSubmit={handleSubmit} hidden={false}>
       <div className="submitElement">
-        
+
         <input
           type="text"
           required={true}

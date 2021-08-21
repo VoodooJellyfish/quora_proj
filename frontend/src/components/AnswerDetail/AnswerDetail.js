@@ -4,28 +4,24 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Import the thunk creator
-import { thunk_fetchQuestion } from '../../store/question';
 import { thunk_fetchAnswer } from '../../store/answer';
 
-import EditQuestionForm from '../EditQuestionForm';
+
 import EditAnswerForm from '../EditAnswerForm';
+import "./AnswerDetail.css"
 
 const AnswerDetail = () => {
   // Declare variables from hooks
   const dispatch = useDispatch();
 
   const {answerId} = useParams()
-  const questions = useSelector(state => Object.values(state.question));
   const answers = useSelector(state => Object.values(state.answer));
   
 
   const user = useSelector(state => Object.values(state.session))
   const userId = user[0]?.id
-  console.log("Entire LIst", userId)
 
   let answerChoice = answers.find(answer => +answer?.id === +answerId)
-
-  console.log("#####", answerChoice)
 
   let hideEdit = true
   let hideDelete = true
@@ -42,9 +38,9 @@ const AnswerDetail = () => {
   }, [answerId, dispatch]);
 
   return (
-    <div>
+    <div className="answerDetail">
       
-      {answerChoice?.answer}
+      <div className="answerWords">{answerChoice?.answer}</div>
       <div hidden={hideEdit}>
         <EditAnswerForm comment={answerChoice} hideEdit={hideEdit} hideDelete={hideDelete}/>
       </div>

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink, } from 'react-router-dom';
 
-import { thunk_fetchUserQuestions } from '../../store/question';
+
 import { thunk_fetchUserAnswers } from '../../store/answer';
 import "./UserComments.css"
 
@@ -15,7 +15,7 @@ const UserCommentList = () => {
   const userId = user[0]?.id
 
   const answers = useSelector(state => Object.values(state.answer))
-  console.log("0000000", answers)
+  // console.log("0000000", answers)
   let userAnswers = answers.filter(answer=> +answer?.userId === +userId)
 
   useEffect(() => {
@@ -26,9 +26,9 @@ const UserCommentList = () => {
     <div id="main-content">
       <ul className="questionul">
           {userAnswers?.map((answer) => 
-          <li className="alistItem">
+          <li key={answer?.id} className="alistItem">
             <div className="directList">
-              <NavLink className="url" key={answer?.Question.id} to={`/questions/${answer?.Question.id}`}> 
+              <NavLink className="url" key={answer?.Question?.id} to={`/questions/${answer?.Question?.id}`}> 
                 {answer.Question ? answer.Question.title: []}
               </NavLink>
             </div>
