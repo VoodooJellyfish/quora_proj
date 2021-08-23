@@ -45,6 +45,11 @@ input {
   cursor: pointer;
 }
 
+.fa-sign-in-alt {
+  background-color: white;
+  color: #551a8b;
+}
+
 /* .form-container {
   display: flex;
   justify-content: center;

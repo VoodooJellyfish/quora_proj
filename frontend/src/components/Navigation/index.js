@@ -33,12 +33,11 @@ function Navigation({ isLoaded }){
 
   return (
     <div className="navbar">
-      {/* <ul className="navlist">
-        <li> */}
-          <NavLink exact to="/"><i className="fas fa-home"></i></NavLink>
+          <NavLink exact to="/"><i className="fas fa-home fa-lg"></i></NavLink>
           {isLoaded && sessionLinks}
-        {/* </li>
-      </ul> */}
+          <div className="about">
+        <a href="https://github.com/VoodooJellyfish">About Me</a>
+      </div>
     </div>
   );
 }

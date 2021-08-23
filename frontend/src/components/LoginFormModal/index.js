@@ -8,7 +8,7 @@ function LoginFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}><i class="fas fa-sign-in-alt"></i></button>
+      <button onClick={() => setShowModal(true)}><i className="fas fa-sign-in-alt"></i></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />
